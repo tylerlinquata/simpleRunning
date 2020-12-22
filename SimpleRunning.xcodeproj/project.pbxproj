@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4866B72D2592AD6900DC4D08 /* RunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866B72C2592AD6900DC4D08 /* RunView.swift */; };
+		4866B7302592ADA700DC4D08 /* RunViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4866B72F2592ADA700DC4D08 /* RunViewModel.swift */; };
 		488F6BE025917386001DA725 /* SimpleRunningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488F6BDF25917386001DA725 /* SimpleRunningApp.swift */; };
 		488F6BE225917386001DA725 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488F6BE125917386001DA725 /* ContentView.swift */; };
 		488F6BE425917388001DA725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 488F6BE325917388001DA725 /* Assets.xcassets */; };
 		488F6BE725917388001DA725 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 488F6BE625917388001DA725 /* Preview Assets.xcassets */; };
 		488F6BE925917388001DA725 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488F6BE825917388001DA725 /* Persistence.swift */; };
 		488F6BEC25917388001DA725 /* SimpleRunning.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 488F6BEA25917388001DA725 /* SimpleRunning.xcdatamodeld */; };
+		48B1D41D25928B000070A47C /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B1D41C25928B000070A47C /* LocationViewModel.swift */; };
+		48B1D42025928D420070A47C /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B1D41F25928D420070A47C /* LocationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4866B72C2592AD6900DC4D08 /* RunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunView.swift; sourceTree = "<group>"; };
+		4866B72F2592ADA700DC4D08 /* RunViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewModel.swift; sourceTree = "<group>"; };
 		488F6BDC25917386001DA725 /* SimpleRunning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleRunning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		488F6BDF25917386001DA725 /* SimpleRunningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRunningApp.swift; sourceTree = "<group>"; };
 		488F6BE125917386001DA725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -24,6 +30,8 @@
 		488F6BE825917388001DA725 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		488F6BEB25917388001DA725 /* SimpleRunning.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleRunning.xcdatamodel; sourceTree = "<group>"; };
 		488F6BED25917388001DA725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48B1D41C25928B000070A47C /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		48B1D41F25928D420070A47C /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +64,10 @@
 		488F6BDE25917386001DA725 /* SimpleRunning */ = {
 			isa = PBXGroup;
 			children = (
-				488F6BDF25917386001DA725 /* SimpleRunningApp.swift */,
-				488F6BE125917386001DA725 /* ContentView.swift */,
-				488F6BE325917388001DA725 /* Assets.xcassets */,
-				488F6BE825917388001DA725 /* Persistence.swift */,
+				48B1D4252592AA780070A47C /* ViewModel */,
+				48B1D4242592AA690070A47C /* Views */,
+				48B1D4222592AA510070A47C /* Supporting Files */,
 				488F6BED25917388001DA725 /* Info.plist */,
-				488F6BEA25917388001DA725 /* SimpleRunning.xcdatamodeld */,
 				488F6BE525917388001DA725 /* Preview Content */,
 			);
 			path = SimpleRunning;
@@ -73,6 +79,36 @@
 				488F6BE625917388001DA725 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		48B1D4222592AA510070A47C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				488F6BDF25917386001DA725 /* SimpleRunningApp.swift */,
+				488F6BE325917388001DA725 /* Assets.xcassets */,
+				488F6BE825917388001DA725 /* Persistence.swift */,
+				488F6BEA25917388001DA725 /* SimpleRunning.xcdatamodeld */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48B1D4242592AA690070A47C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				488F6BE125917386001DA725 /* ContentView.swift */,
+				48B1D41F25928D420070A47C /* LocationView.swift */,
+				4866B72C2592AD6900DC4D08 /* RunView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		48B1D4252592AA780070A47C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				48B1D41C25928B000070A47C /* LocationViewModel.swift */,
+				4866B72F2592ADA700DC4D08 /* RunViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +181,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				488F6BE925917388001DA725 /* Persistence.swift in Sources */,
+				48B1D42025928D420070A47C /* LocationView.swift in Sources */,
 				488F6BEC25917388001DA725 /* SimpleRunning.xcdatamodeld in Sources */,
 				488F6BE225917386001DA725 /* ContentView.swift in Sources */,
+				48B1D41D25928B000070A47C /* LocationViewModel.swift in Sources */,
+				4866B72D2592AD6900DC4D08 /* RunView.swift in Sources */,
+				4866B7302592ADA700DC4D08 /* RunViewModel.swift in Sources */,
 				488F6BE025917386001DA725 /* SimpleRunningApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
