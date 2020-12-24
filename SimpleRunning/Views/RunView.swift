@@ -14,9 +14,9 @@ struct RunView: View {
     
     var body: some View {
         VStack {
-            Text("Distance:")
+            Text("Distance: \(runViewModel.distance.value)")
             Text("Time: \(runViewModel.seconds)")
-            Text("Pace:")
+            Text("Pace: \(runViewModel.pace)")
             Button(action: {
                 self.showingAlert = true
                 self.runViewModel.pauseTimer()

@@ -12,9 +12,10 @@ import CoreLocation
 class RunViewModel: NSObject, ObservableObject {
     @Published var seconds = 0
     @Published var distance = Measurement(value: 0, unit: UnitLength.meters)
+    @Published var pace = 0.0
     
     private var timer: Timer?
-    private var locationList: [CLLocation] = []
+    private var locationsList: [CLLocation] = []
     private let locationManager = CLLocationManager()
     
     override init() {
@@ -24,11 +25,6 @@ class RunViewModel: NSObject, ObservableObject {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-    }
-    
-    deinit {
-        self.timer?.invalidate()
-        self.locationManager.stopUpdatingLocation()
     }
     
     func startTimer() {
@@ -43,12 +39,25 @@ class RunViewModel: NSObject, ObservableObject {
     
     func endRun() {
         self.timer?.invalidate()
+        self.locationManager.stopUpdatingLocation()
         self.seconds = 0
     }
 }
 
 extension RunViewModel: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.last else { return }
+        for newLocation in locations {
+            let secondsSinceLocationUpdate = newLocation.timestamp.timeIntervalSinceNow
+            guard newLocation.horizontalAccuracy < 20 && abs(secondsSinceLocationUpdate) < 10 else {
+                continue
+            }
+            
+            if let lastLocation = locationsList.last {
+                let delta = newLocation.distance(from: lastLocation)
+                distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+            }
+            
+            locationsList.append(newLocation)
+        }
     }
 }
