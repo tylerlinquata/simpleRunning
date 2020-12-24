@@ -19,6 +19,12 @@ struct RunView: View {
                 Text("Stop")
             })
         }
+        .onAppear(perform: {
+            runViewModel.startTimer()
+        })
+        .onDisappear(perform: {
+            runViewModel.stopTimer()
+        })
     }
 }
 

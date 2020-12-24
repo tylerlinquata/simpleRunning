@@ -25,15 +25,22 @@ class RunViewModel: NSObject, ObservableObject {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-        
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            self.seconds += 1
-        }
     }
     
     deinit {
         self.timer?.invalidate()
         self.locationManager.stopUpdatingLocation()
+    }
+    
+    func startTimer() {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.seconds += 1
+        }
+    }
+    
+    func stopTimer() {
+        self.timer?.invalidate()
+        self.seconds = 0
     }
 }
 
