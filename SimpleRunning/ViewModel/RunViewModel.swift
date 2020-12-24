@@ -13,9 +13,8 @@ class RunViewModel: NSObject, ObservableObject {
     @Published var seconds = 0
     @Published var distance = Measurement(value: 0, unit: UnitLength.meters)
     
-    var timer: Timer?
-    var locationList: [CLLocation] = []
-    
+    private var timer: Timer?
+    private var locationList: [CLLocation] = []
     private let locationManager = CLLocationManager()
     
     override init() {
@@ -38,7 +37,11 @@ class RunViewModel: NSObject, ObservableObject {
         }
     }
     
-    func stopTimer() {
+    func pauseTimer() {
+        self.timer?.invalidate()
+    }
+    
+    func endRun() {
         self.timer?.invalidate()
         self.seconds = 0
     }

@@ -8,23 +8,42 @@
 import SwiftUI
 
 struct RunView: View {
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @ObservedObject var runViewModel = RunViewModel()
+    @State var showingAlert = false
     
     var body: some View {
         VStack {
             Text("Distance:")
             Text("Time: \(runViewModel.seconds)")
             Text("Pace:")
-            Button(action: {}, label: {
+            Button(action: {
+                self.showingAlert = true
+                self.runViewModel.pauseTimer()
+            }, label: {
                 Text("Stop")
+            })
+            .alert(isPresented: $showingAlert, content: {
+                Alert(
+                    title: Text("End run?"),
+                    message: Text("Do you wish to end your run?"),
+                    primaryButton: .default(Text("Save"), action: endRun),
+                    secondaryButton: .cancel(Text("Cancel"), action: resumeRun)
+                )
             })
         }
         .onAppear(perform: {
-            runViewModel.startTimer()
+            self.runViewModel.startTimer()
         })
-        .onDisappear(perform: {
-            runViewModel.stopTimer()
-        })
+    }
+    
+    private func resumeRun() {
+        self.runViewModel.startTimer()
+    }
+    
+    private func endRun() {
+        self.runViewModel.endRun()
+        self.mode.wrappedValue.dismiss()
     }
 }
 
