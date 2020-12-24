@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import CoreLocation
+import CoreData
 
 class RunViewModel: NSObject, ObservableObject {
     @Published var seconds = 0
@@ -22,6 +23,8 @@ class RunViewModel: NSObject, ObservableObject {
         super.init()
         
         self.locationManager.delegate = self
+        self.locationManager.activityType = .fitness
+        self.locationManager.distanceFilter = 1
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
